@@ -8,3 +8,6 @@ MUL_KSIZE_MobileNet_v2_best.hdf5
 face_landmarker.task
 pose_landmarker_full.task
 MobileNet_v2_best.onnx
+Emotion_detetion_deep_learning_model
+Fash_mesh_mediapipe_v0
+VIT_affectnet.pth

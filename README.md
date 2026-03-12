@@ -57,7 +57,8 @@ A sophisticated real-time vision system that combines multi-person tracking, adv
    - [ ] https://www.kaggle.com/code/tangthanhvuik18ct/dbm-project-deepface/output
    - [ ] https://github.com/liminze/Real-time-Facial-Expression-Recognition-and-Fast-Face-Detection/tree/master/models/best_model
    - [] the modilefacenet download the model from the github repo
-
+   - VIT Finetunned model 
+   - [] https://www.kaggle.com/code/shivamchaudharys/vit-swin-transformer-affectnet/output
 5. **Run the Convert_model_in_onnx if running on cpu make it #x faster**
    ```bash
    python convert_model_in_onnx.py  

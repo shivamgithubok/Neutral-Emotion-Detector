@@ -30,15 +30,12 @@ class VisionManager:
     def start(self):
         if self.running:
             return
-        # Reverting to CAP_DSHOW as confirmed by diagnostic script
-        self.camera = cv2.VideoCapture(0, cv2.CAP_DSHOW)
-        
-        # Set resolution
-        self.camera.set(cv2.CAP_PROP_FRAME_WIDTH, 640)
-        self.camera.set(cv2.CAP_PROP_FRAME_HEIGHT, 480)
+        # Use the provided video file
+        video_path = os.path.join(os.getcwd(), "Testing_viedo.mp4")
+        self.camera = cv2.VideoCapture(video_path)
         
         if not self.camera.isOpened():
-            print("[Error] Could not open camera.")
+            print(f"[Error] Could not open video file: {video_path}")
             self.running = False
             return
         
@@ -68,7 +65,8 @@ class VisionManager:
         while self.running:
             success, frame = self.camera.read()
             if not success:
-                time.sleep(0.1)
+                # Loop video: reset pointer to start
+                self.camera.set(cv2.CAP_PROP_POS_FRAMES, 0)
                 continue
             
             # Process frame through Vision Engine
@@ -128,7 +126,9 @@ def get_expressions():
 
 @app.route('/api/set_model/<model_type>')
 def set_model(model_type):
-    if model_type.lower() == "pth":
+    if model_type.lower() == "vit":
+        filename = "VIT_affectnet.pth"
+    elif model_type.lower() == "pth":
         filename = "Affectnet_model.pth"
     elif model_type.lower() == "h5":
         filename = "MUL_KSIZE_MobileNet_v2_best.hdf5"

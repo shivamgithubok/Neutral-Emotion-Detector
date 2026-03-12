@@ -1067,11 +1067,14 @@ class VisionEngine:
         self._face_lm: Optional[FaceLandmarker]  = None
         self._dl_expr: Optional[DLBasedEmotionClassifier] = None
         
-        # Default to AffectNet PyTorch model
-        dl_path = os.path.join(_DIR, "Affectnet_model.pth")
+        # Default to VIT AffectNet PyTorch model
+        dl_path = os.path.join(_DIR, "VIT_affectnet.pth")
         if not os.path.exists(dl_path):
-            # Fallback to ONNX if .pth doesn't exist
-            dl_path = os.path.join(_DIR, "facial_expression_recognition_mobilefacenet.onnx")
+            # Fallback to older AffectNet if VIT doesn't exist
+            dl_path = os.path.join(_DIR, "Affectnet_model.pth")
+            if not os.path.exists(dl_path):
+                # Ultimate fallback to ONNX
+                dl_path = os.path.join(_DIR, "facial_expression_recognition_mobilefacenet.onnx")
             
         self._dl_expr = DLBasedEmotionClassifier(dl_path)
         
