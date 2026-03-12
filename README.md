@@ -56,6 +56,7 @@ A sophisticated real-time vision system that combines multi-person tracking, adv
 4. **Download the modles here**
    - [ ] https://www.kaggle.com/code/tangthanhvuik18ct/dbm-project-deepface/output
    - [ ] https://github.com/liminze/Real-time-Facial-Expression-Recognition-and-Fast-Face-Detection/tree/master/models/best_model
+   - [] the modilefacenet download the model from the github repo
 
 5. **Run the Convert_model_in_onnx if running on cpu make it #x faster**
    ```bash
