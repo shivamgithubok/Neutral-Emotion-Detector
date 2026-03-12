@@ -1,0 +1,11 @@
+flask
+flask-socketio
+eventlet
+opencv-python
+numpy
+mediapipe
+torch
+torchvision
+onnx
+onnx-tf
+tensorflow

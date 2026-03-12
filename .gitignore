@@ -1,0 +1,10 @@
+old
+convert
+.venv
+__pycache__
+Affectnet_model.pth
+facial_expression_recognition_mobilefacenet.onnx
+MUL_KSIZE_MobileNet_v2_best.hdf5
+face_landmarker.task
+pose_landmarker_full.task
+MobileNet_v2_best.onnx

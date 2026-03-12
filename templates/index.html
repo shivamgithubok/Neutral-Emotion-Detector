@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vision Engine AI Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Outfit:wght@400;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.socket.io/4.0.0/socket.io.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="dark-theme">
+    <div class="glass-container">
+        <header>
+            <div class="logo">
+                <h1>ELEVATICS AI <span>VISION ENGINE</span></h1>
+            </div>
+            <div class="status-indicator">
+                <span class="pulse"></span> LIVE
+            </div>
+            <div class="controls">
+                <select id="modelSelect" class="btn btn-dark" title="Select Expression Model">
+                    <option value="pth" selected>AffectNet (PyTorch)</option>
+                    <option value="onnx">MobileNet (ONNX)</option>
+                    <option value="h5">MobileNet V2 (HDF5)</option>
+                </select>
+                <button id="startBtn" class="btn btn-primary">Start Engine</button>
+                <button id="stopBtn" class="btn btn-danger">Stop Engine</button>
+            </div>
+        </header>
+
+        <main class="dashboard-grid">
+            <section class="video-section card glass">
+                <div class="card-header">
+                    <h2>Real-time Stream</h2>
+                    <div id="fps" class="badge">FPS: 0.0</div>
+                </div>
+                <div class="video-container">
+                    <img id="videoFeed" src="" alt="Live Video Feed">
+                </div>
+            </section>
+
+            <section class="stats-section card glass">
+                <div class="card-header">
+                    <h2>Live Statistics</h2>
+                </div>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <span class="stat-label">Tracked Persons</span>
+                        <span id="numTracked" class="stat-value">0</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-label">Fall Risks</span>
+                        <span id="fallRisks" class="stat-value">0</span>
+                    </div>
+                    <div class="stat-card highlight">
+                        <span class="stat-label">Primary Expression</span>
+                        <span id="primaryExpression" class="stat-value">NEUTRAL</span>
+                        <span id="expressionConf" class="stat-badge">0%</span>
+                    </div>
+                </div>
+                <div class="chart-container">
+                    <canvas id="statsChart"></canvas>
+                </div>
+            </section>
+
+            <section class="events-section card glass">
+                <div class="card-header">
+                    <h2>Event Log</h2>
+                </div>
+                <div id="eventLog" class="event-log">
+                    <!-- Events will be appended here -->
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>&copy; 2026 Elevatics AI. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
