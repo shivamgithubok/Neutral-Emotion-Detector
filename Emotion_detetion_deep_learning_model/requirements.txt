@@ -1,0 +1,4 @@
+mediapipe==0.10.9
+opencv-python
+keras==3.13.2
+tensorflow==2.21.0
